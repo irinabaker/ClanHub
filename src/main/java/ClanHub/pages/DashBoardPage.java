@@ -34,7 +34,10 @@ public class DashBoardPage extends BasePage {
     public DashBoardPage createTask(String taskName, String dueDate) {
         click(addTaskBtn);
         type(taskTitleInput, taskName);
-        type(dateInput, dueDate);
+        Actions action = new Actions(driver);
+        action.moveToElement(dateInput);
+        action.click();
+        action.sendKeys(dueDate).build().perform();
         click(checkmarkIcon);
         clickOkBtn();
         return this;
